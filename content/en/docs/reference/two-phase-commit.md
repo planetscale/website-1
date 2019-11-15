@@ -19,13 +19,13 @@ Guaranteeing ACID Isolation is very contentious and has high costs. Providing it
 
 ### Configuring VTGate
 
-The atomicity policy is controlled by the transaction_mode flag. The default value is multi, and will set it in multi-database mode. This is the same as the previous legacy behavior.
+The atomicity policy is controlled by the transaction_mode flag. The default value is MULTI, and will set it in multi-database mode. This is the same as the previous legacy behavior.
 
-To enforce single-database transactions, the VTGates can be started by specifying transaction_mode=single.
+To enforce single-database transactions, the VTGates can be started by specifying transaction_mode=SINGLE.
 
-To enable 2PC, the VTGates need to be started with transaction_mode=twopc. The VTTablets will require a few more flags, which will be explained below.
+To enable 2PC, the VTGates need to be started with transaction_mode=TWOPC. The VTTablets will require a few more flags, which will be explained below.
 
-The VTGate transaction_mode flag decides what to allow. The application can independently request a specific atomicity for each transaction. The request will be honored by VTGate only if it does not exceed what is allowed by the transaction_mode. For example, transacion_mode=single will only allow single-db transactions. On the other hand, transaction_mode=twopc will allow all three levels of atomicity.
+The VTGate transaction_mode flag decides what to allow. The application can independently request a specific atomicity for each transaction. The request will be honored by VTGate only if it does not exceed what is allowed by the transaction_mode. For example, transaction_mode=SINGLE will only allow single-db transactions. On the other hand, transaction_mode=TWOPC will allow all three levels of atomicity.
 
 ## Driver APIs
 
